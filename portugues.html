@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Português</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div id="flashcard-container">
+            <p id="pergunta"></p>
+            <p id="resposta"></p>
+        </div>
+        <div id="botoes-container">
+            <button id="anterior">Voltar</button>
+            <button id="proximo">Próximo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Adicione os flashcards específicos aqui
+        var flashcardsPortugues = [
+            { pergunta: "Qual é a função do sujeito em uma oração?", resposta: "Indicar quem ou o que realiza a ação" },
+            { pergunta: "O que são pronomes pessoais?", resposta: "Pronomes que substituem os nomes das pessoas" },
+            { pergunta: "Quais são os casos de acentuação das palavras proparoxítonas?", resposta: "Todas as palavras proparoxítonas são acentuadas, independentemente da terminação." }
+            
+            
+            // Adicione mais flashcards aqui...
+        ];
+
+        // Defina a variável currentIndexPortugues para controlar o índice dos flashcards
+        var currentIndexPortugues = 0;
+
+        // Defina a função exibirFlashcardPortugues para exibir os flashcards
+        function exibirFlashcardPortugues() {
+            var perguntaElemento = document.getElementById("pergunta");
+            var respostaElemento = document.getElementById("resposta");
+            var anteriorBotao = document.getElementById("anterior");
+            var proximoBotao = document.getElementById("proximo");
+
+            var flashcardAtual = flashcardsPortugues[currentIndexPortugues];
+
+            perguntaElemento.style.display = "block";
+            respostaElemento.style.display = "none";
+
+            perguntaElemento.textContent = flashcardAtual.pergunta;
+
+            perguntaElemento.addEventListener("click", function() {
+                perguntaElemento.style.display = "none";
+                respostaElemento.style.display = "block";
+                respostaElemento.textContent = flashcardAtual.resposta;
+            });
+
+            respostaElemento.addEventListener("click", function() {
+                perguntaElemento.style.display = "block";
+                respostaElemento.style.display = "none";
+                respostaElemento.textContent = "";
+            });
+
+            if (currentIndexPortugues === 0) {
+                anteriorBotao.disabled = true;
+            } else {
+                anteriorBotao.disabled = false;
+            }
+
+            if (currentIndexPortugues === flashcardsPortugues.length - 1) {
+                proximoBotao.disabled = true;
+            } else {
+                proximoBotao.disabled = false;
+            }
+        }
+
+        function exibirProximoFlashcardPortugues() {
+            currentIndexPortugues++;
+            exibirFlashcardPortugues();
+        }
+
+        function exibirFlashcardAnteriorPortugues() {
+            currentIndexPortugues--;
+            exibirFlashcardPortugues();
+        }
+
+        var proximoBotao = document.getElementById("proximo");
+        proximoBotao.addEventListener("click", exibirProximoFlashcardPortugues);
+
+        var anteriorBotao = document.getElementById("anterior");
+        anteriorBotao.addEventListener("click", exibirFlashcardAnteriorPortugues);
+
+        exibirFlashcardPortugues();
+    </script>
+</body>
+</html>
+

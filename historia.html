@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - História</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div id="flashcard-container">
+            <p id="pergunta"></p>
+            <p id="resposta"></p>
+        </div>
+        <div id="botoes-container">
+            <button id="anterior">Voltar</button>
+            <button id="proximo">Próximo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Adicione os flashcards específicos de Português aqui
+        var flashcardsHistoria = [
+        { pergunta: "Quando ocorreu a Revolução Francesa?", resposta: "A Revolução Francesa ocorreu no fim do século XVIII, entre 1789 e 1799." },
+
+{ pergunta: "Quais foram as principais causas da Revolução Francesa?", resposta: "As principais causas da Revolução Francesa foram a desigualdade social, a insatisfação popular com a monarquia francesa e a influência das ideias iluministas." },
+
+{ pergunta: "Quem liderou a Revolução Francesa?", resposta: "A Revolução Francesa foi liderada por vários grupos, incluindo os jacobinos e os girondinos." },
+
+{ pergunta: "Quais foram as principais consequências da Revolução Francesa?", resposta: "Foram a queda da monarquia francesa, o estabelecimento de um regime republicano e a disseminação dos ideais revolucionários pelo mundo." },
+
+{ pergunta: "Qual foi o papel de Napoleão Bonaparte na Revolução Francesa?", resposta: "Napoleão Bonaparte foi um líder militar que emergiu no final da Revolução Francesa e acabou se tornando imperador da França." },
+
+{ pergunta: "Qual foi o objeto da Declaração dos Direitos do Homem e do Cidadão?", resposta: "A Declaração dos Direitos do Homem e do Cidadão foi um documento que defendia a liberdade, a igualdade e a fraternidade como direitos fundamentais do homem." },
+
+{ pergunta: "O que foi o Terror durante a Revolução Francesa?", resposta: "O Terror foi um período de repressão violenta que ocorreu durante a Revolução Francesa, liderado por Robespierre, líder dos jacobinos." },
+    // Adicione mais flashcards de Matemática aqui
+];
+
+
+        // Defina a variável currentIndexPortugues para controlar o índice dos flashcards de Português
+        var currentIndexHistoria = 0;
+
+        // Defina a função exibirFlashcardPortugues para exibir os flashcards de Português
+        function exibirFlashcardHistoria() {
+            var perguntaElemento = document.getElementById("pergunta");
+            var respostaElemento = document.getElementById("resposta");
+            var anteriorBotao = document.getElementById("anterior");
+            var proximoBotao = document.getElementById("proximo");
+
+            var flashcardAtual = flashcardsHistoria[currentIndexHistoria];
+
+            perguntaElemento.style.display = "block";
+            respostaElemento.style.display = "none";
+
+            perguntaElemento.textContent = flashcardAtual.pergunta;
+
+            perguntaElemento.addEventListener("click", function() {
+                perguntaElemento.style.display = "none";
+                respostaElemento.style.display = "block";
+                respostaElemento.textContent = flashcardAtual.resposta;
+            });
+
+            respostaElemento.addEventListener("click", function() {
+                perguntaElemento.style.display = "block";
+                respostaElemento.style.display = "none";
+                respostaElemento.textContent = "";
+            });
+
+            if (currentIndexHistoria === 0) {
+                anteriorBotao.disabled = true;
+            } else {
+                anteriorBotao.disabled = false;
+            }
+
+            if (currentIndexHistoria === flashcardsHistoria.length - 1) {
+                proximoBotao.disabled = true;
+            } else {
+                proximoBotao.disabled = false;
+            }
+        }
+
+        function exibirProximoFlashcardHistoria() {
+            currentIndexHistoria++;
+            exibirFlashcardHistoria();
+        }
+
+        function exibirFlashcardAnteriorHistoria() {
+            currentIndexHistoria--;
+            exibirFlashcardHistoria();
+        }
+
+        var proximoBotao = document.getElementById("proximo");
+        proximoBotao.addEventListener("click", exibirProximoFlashcardHistoria);
+
+        var anteriorBotao = document.getElementById("anterior");
+        anteriorBotao.addEventListener("click", exibirFlashcardAnteriorHistoria);
+
+        exibirFlashcardHistoria();
+    </script>
+</body>
+</html>
