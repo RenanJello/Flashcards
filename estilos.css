@@ -80,6 +80,7 @@
 .disciplina-card {
   background-color: red;
   color: white;
+  font-weight: bold;
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
