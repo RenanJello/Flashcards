@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Literatura</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div id="flashcard-container">
+            <p id="pergunta"></p>
+            <p id="resposta"></p>
+        </div>
+        <div id="botoes-container">
+            <button id="anterior">Voltar</button>
+            <button id="proximo">Próximo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Adicione os flashcards específicos de Português aqui
+        var flashcardsLiteratura = [
+    { pergunta: "Qual é a fórmula para calcular a área de um círculo?", resposta: "A = π * r²" },
+    { pergunta: "O que é uma equação quadrática?", resposta: "Uma equação de segundo grau com uma incógnita." },
+    // Adicione mais flashcards de Matemática aqui
+];
+
+
+        // Defina a variável currentIndexPortugues para controlar o índice dos flashcards de Português
+        var currentIndexLiteratura = 0;
+
+        // Defina a função exibirFlashcardPortugues para exibir os flashcards de Português
+        function exibirFlashcardLiteratura() {
+            var perguntaElemento = document.getElementById("pergunta");
+            var respostaElemento = document.getElementById("resposta");
+            var anteriorBotao = document.getElementById("anterior");
+            var proximoBotao = document.getElementById("proximo");
+
+            var flashcardAtual = flashcardsLiteratura[currentIndexLiteratura];
+
+            perguntaElemento.style.display = "block";
+            respostaElemento.style.display = "none";
+
+            perguntaElemento.textContent = flashcardAtual.pergunta;
+
+            perguntaElemento.addEventListener("click", function() {
+                perguntaElemento.style.display = "none";
+                respostaElemento.style.display = "block";
+                respostaElemento.textContent = flashcardAtual.resposta;
+            });
+
+            respostaElemento.addEventListener("click", function() {
+                perguntaElemento.style.display = "block";
+                respostaElemento.style.display = "none";
+                respostaElemento.textContent = "";
+            });
+
+            if (currentIndexLiteratura === 0) {
+                anteriorBotao.disabled = true;
+            } else {
+                anteriorBotao.disabled = false;
+            }
+
+            if (currentIndexLiteratura === flashcardsLiteratura.length - 1) {
+                proximoBotao.disabled = true;
+            } else {
+                proximoBotao.disabled = false;
+            }
+        }
+
+        function exibirProximoFlashcardLiteratura() {
+            currentIndexLiteratura++;
+            exibirFlashcardLiteratura();
+        }
+
+        function exibirFlashcardAnteriorLiteratura() {
+            currentIndexLiteratura--;
+            exibirFlashcardLiteratura();
+        }
+
+        var proximoBotao = document.getElementById("proximo");
+        proximoBotao.addEventListener("click", exibirProximoFlashcardLiteratura);
+
+        var anteriorBotao = document.getElementById("anterior");
+        anteriorBotao.addEventListener("click", exibirFlashcardAnteriorLiteratura);
+
+        exibirFlashcardLiteratura();
+    </script>
+</body>
+</html>
