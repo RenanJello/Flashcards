@@ -1,7 +1,6 @@
 
-  
   html, body {
-    background-color: #fff;
+    background-color: #ffffff;
     font-family: Arial, sans-serif;
     height: 100%; /* Definir a altura da tela */
     margin: 0;
@@ -13,7 +12,7 @@
     #flashcard-container {
         width: 320px; /* Largura do cartão */
         height: 200px; /* Altura do cartão */
-        background-color: rgb(253, 217, 90);
+        background-color: rgb(255, 116, 146);
         border-radius: 10px; /* Bordas arredondadas */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
         margin: 100px auto; /* Margem superior e inferior com valor de 20px */
@@ -36,7 +35,7 @@
   }
   
   #proximo, #anterior {
-  background-color: orange;
+  background-color: rgb(255, 25, 71);
   color: white;
   padding: 10px 20px;
   margin-left: 5px;
@@ -45,6 +44,16 @@
   border-radius: 5px;
   }
 
+  #anterior:hover {
+
+    background-color: #560d1d;
+  }
+
+  #proximo:hover {
+    background-color: #560d1d;
+  }
+
+  
   .container {
     display: flex;
     flex-direction: column;
@@ -78,7 +87,7 @@
 }*/
 
 .disciplina-card {
-  background-color: red;
+  background-color: rgb(224, 17, 90);
   color: white;
   font-weight: bold;
   padding: 10px;
@@ -96,7 +105,7 @@
 }
 
 .disciplina-card:hover {
-    background-color: darkred;
+    background-color: rgb(101, 19, 44);
 }
 
   
